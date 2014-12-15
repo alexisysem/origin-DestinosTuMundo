@@ -666,6 +666,7 @@ tr.summary-details-excluded { font-style:italic; }
 	float:left;
 	display:block;
 	text-decoration:none !important;
+	padding-bottom: 20px;
 }
 .header .logo strong { position:absolute; top:-999em; left:-999em; width:0; height:0; font-size:0; line-height:0; font-size: 0; overflow:hidden; }
 .header .logo img {max-width:100%; height:auto;}
