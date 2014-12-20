@@ -106,16 +106,19 @@
 			<a href="aruba.html" class="level-top"><span>Inicio</span></a>
 		</li>
 		<li class="level0 nav-1 first level-top">
-			<a href="aruba.html" class="level-top"><span>Nacionales</span></a>
+			<a href="aruba.html" class="level-top"><span>Tour</span></a>
 		</li>
 		<li class="level0 nav-1 first level-top">
-			<a href="aruba.html" class="level-top"><span>Internacionales</span></a>
+			<a href="aruba.html" class="level-top"><span>Seguros</span></a>
 		</li>
 		<li class="level0 nav-2 level-top">
-			<a href="cancun.html" class="level-top"><span>Tour</span></a>
+			<a href="cancun.html" class="level-top"><span>Hoteles</span></a>
 		 </li>
 		 <li class="level0 nav-2 level-top">
-			<a href="cancun.html" class="level-top"><span>Pasajes</span></a>
+			<a href="cancun.html" class="level-top"><span>Quienes Somos</span></a>
+		 </li>
+		 <li class="level0 nav-2 level-top">
+			<a href="cancun.html" class="level-top"><span>Formas de Pago</span></a>
 		 </li>
 		 <li class="level0 nav-2 level-top">
 			<a href="cancun.html" class="level-top"><span>Contáctenos</span></a>
