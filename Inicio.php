@@ -1,32 +1,5 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<?php include('header.php') ?>
 
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>Pagina principal</title>
-
-<script type="text/javascript" src="js/jquery-1.7.min.js"></script>
-<script type="text/javascript" src="js/superfish.js"></script>
-
-
-<link rel="stylesheet" type="text/css" href="css/font-awesome.css" media="all"/>
-<link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css" media="all"/>
-<link rel="stylesheet" type="text/css" href="css/photoswipe.css" media="all"/>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css" media="all"/>
-<link rel="stylesheet" type="text/css" href="css/extra_style.css" media="all"/>
-<link rel="stylesheet" type="text/css" href="css/style.css" media="all"/>
-<link rel="stylesheet" type="text/css" href="css/responsive.css" media="all"/>
-<link rel="stylesheet" type="text/css" href="css/superfish.css" media="all"/>
-<link rel="stylesheet" type="text/css" href="css/camera.css" media="all"/>
-<link rel="stylesheet" type="text/css" href="css/widgets.css" media="all"/>
-<link rel="stylesheet" type="text/css" href="css/cloud-zoom.css" media="all"/>
-<link rel="stylesheet" type="text/css" href="css/catalogsale.css" media="all"/>
-<link rel="stylesheet" type="text/css" href="css/print.css" media="print"/>
-
-
-</head>
-<body class="ps-static  cms-index-index cms-home">
 <div class="wrapper ps-static en-lang-class">
 	<div class="page">
 	<div class="top-container">
@@ -37,12 +10,12 @@
 		<p class="welcome-msg">Welcome to our travel agency! </p>
 		<div class="header-buttons">
 		<div class="header-button currency-list">
-		<a title="Spanish" href="test.php?Lan=EN"> 
+		<a title="Spanish" id="lnkEspaniol" > 
 			<img src="images/flag_pe.png" />
 		</a>		
 		</div>
 		<div class="header-button lang-list">
-		<a title="English" href="test.php?Lan=ES">
+		<a title="English" id="lnkIngles">
 			<img src="images/flag_us.png" />
 		</a>		
 		</div>
@@ -102,40 +75,51 @@
 		<div class="clear"></div>
 		<div class="nav-container">
 		<ul id="nav" class="sf-menu sf-js-enabled">
-		<li class="level0 nav-1 first level-top">
-			<a href="aruba.html" class="level-top"><span>Inicio</span></a>
-		</li>
-		<li class="level0 nav-1 first level-top">
-<<<<<<< HEAD
-			<a href="aruba.html" class="level-top"><span>Tour</span></a>
-		</li>
-		<li class="level0 nav-1 first level-top">
-			<a href="aruba.html" class="level-top"><span>Seguros</span></a>
-=======
-			<a href="aruba.html" class="level-top"><span>Quienes Somos</span></a>
-		</li>
-		<li class="level0 nav-1 first level-top">
-			<a href="aruba.html" class="level-top"><span>Tour</span></a>
->>>>>>> origin/master
-		</li>
-		<li class="level0 nav-2 level-top">
-			<a href="cancun.html" class="level-top"><span>Hoteles</span></a>
-		 </li>
-		 <li class="level0 nav-2 level-top">
-			<a href="cancun.html" class="level-top"><span>Quienes Somos</span></a>
-		 </li>
-		 <li class="level0 nav-2 level-top">
-			<a href="cancun.html" class="level-top"><span>Formas de Pago</span></a>
-		 </li>
-		 <li class="level0 nav-2 level-top">
-			<a href="cancun.html" class="level-top"><span>Seguros</span></a>
-		 </li>
-		 <li class="level0 nav-2 level-top">
-			<a href="cancun.html" class="level-top"><span>Formas de Pago</span></a>
-		 </li>
-		 <li class="level0 nav-2 level-top">
-			<a href="cancun.html" class="level-top"><span>Contáctenos</span></a>
-		 </li>
+			<?php
+
+				$username = "root";
+				$password = "1234";
+				$hostname = "localhost"; 
+
+				//connection to the database
+				$dbhandle = mysql_connect($hostname, $username, $password) 
+				 or die("Unable to connect to MySQL");
+				//echo "Connected to MySQL<br>";
+
+				//select a database to work with
+				$selected = mysql_select_db("destinos",$dbhandle) 
+				  or die("Could not select examples");
+
+				// Retrieve appropriate title according to the chosen language in the system
+				  $idioma = '';
+				  //echo "<script>alert(".is_null($idioma).")</script>";
+				  if(!array_key_exists('lang',$_GET))
+				  	$idioma = 'ES';
+				  else $idioma = $_GET["lang"];
+
+				$sql = "SELECT m.CodigoMenu,mt.DescripcionMenu
+				        FROM MENU m
+				        INNER JOIN MENUTRANSLATION mt ON m.CodigoMenu = mt.CodigoMenu
+				        WHERE mt.CodigoIdioma = '".$idioma."'";
+
+
+				//execute the SQL query and return records
+				$result = mysql_query($sql);
+
+				//fetch tha data from the database 
+				while ($row = mysql_fetch_array($result)) {
+				   echo '<li class="level0 nav-1 first level-top">
+					<a href="aruba.html" class="level-top"><span>'.$row{'DescripcionMenu'}.'</span></a>
+				</li>'; 
+				   
+				}
+				//close the connection
+				mysql_close($dbhandle);
+
+
+				?>
+		
+		
 		 
 		</ul>
 		<div class="sf-menu-block">
@@ -196,8 +180,111 @@
 		</div>
 		 
 		</div> </div>
-	
-	
+	<div class="main-container-tile">
+	</div>
+	<div class="footer-container">
+		<div class="container">
+			<div class="row">
+			<div class="col-xs-12">
+			<div class="footer">
+			
+			<div class="footer-cols-wrapper">
+			<div class="footer-col footer-col-ex">
+			<div class="f_block">
+			<h4>Information<span class="toggle"></span></h4>
+			<div class="footer-col-content">
+			<ul>
+			<li><a href="http://livedemo00.template-help.com/magento_47319/about-magento-demo-store">About Us</a></li>
+			<li><a href="http://livedemo00.template-help.com/magento_47319/customer-service">Customer Service</a></li>
+			<li class="last privacy"><a href="http://livedemo00.template-help.com/magento_47319/privacy-policy-cookie-restriction-mode">Privacy Policy</a></li>
+			</ul> <ul class="links">
+			<li class="first"><a href="http://livedemo00.template-help.com/magento_47319/catalog/seo_sitemap/category/" title="Site Map">Site Map</a></li>
+			<li><a href="http://livedemo00.template-help.com/magento_47319/catalogsearch/term/popular/" title="Search Terms">Search Terms</a></li>
+			<li><a href="http://livedemo00.template-help.com/magento_47319/catalogsearch/advanced/" title="Advanced Search">Advanced Search</a></li>
+			<li><a href="http://livedemo00.template-help.com/magento_47319/sales/guest/form/" title="Orders and Returns">Orders and Returns</a></li>
+			<li class=" last"><a href="http://livedemo00.template-help.com/magento_47319/contacts/" title="Contact Us">Contact Us</a></li>
+			</ul>
+			</div>
+			</div>
+			</div>
+			<div class="footer-col footer-col-ex">
+			<div class="f_block">
+			<h4>Why buy from us<span class="toggle"></span></h4>
+			<div class="footer-col-content">
+			<ul>
+			<li><a href="#">Shipping &amp; Returns</a></li>
+			<li><a href="#">Secure Shopping</a></li>
+			<li><a href="#">International Shipping</a></li>
+			<li><a href="#">Affiliates</a></li>
+			<li><a href="#">Group Sales</a></li>
+			</ul>
+			</div>
+			</div>
+			</div>
+			<div class="footer-col footer-col-ex">
+			<div class="f_block">
+			<h4>My account<span class="toggle"></span></h4>
+			<div class="footer-col-content">
+			<ul>
+			<li><a href="http://livedemo00.template-help.com/magento_47319/customer/account/login/">Sign In</a></li>
+			<li><a href="http://livedemo00.template-help.com/magento_47319/checkout/cart/">View Cart</a></li>
+			<li><a href="http://livedemo00.template-help.com/magento_47319/wishlist/">My Wishlist</a></li>
+			<li><a href="#">Track My Order</a></li>
+			<li><a href="#">Help</a></li>
+			</ul>
+			</div>
+			</div>
+			</div>
+			<div class="footer-col wide-col footer-col-ex">
+			<div class="f_block">
+			<h4>Contacts<span class="toggle"></span></h4>
+			<div class="footer-col-content">
+			<div class="footer_info">
+			<p>
+			Company Inc., 8901 Marmora <br>
+			Road, Glasgow, D04 89GR
+			</p>
+			<span>Call us now toll free:</span>
+			<strong>(800) 2345-6789</strong>
+			</div>
+			</div>
+			</div>
+			</div>
+			<div class="footer-col wide-col last footer-col-ex">
+			<div class="f_block block-subscribe">
+			<h4>Newsletter<span class="toggle"></span></h4>
+			<div class="footer-col-content">
+			<form action="http://livedemo00.template-help.com/magento_47319/newsletter/subscriber/new/" method="post" id="newsletter-validate-detail">
+			<div class="newsletter-wrapper">
+			<div class="input-box">
+			<input type="text" name="email" id="newsletter" title="Sign up for our newsletter" class="input-text required-entry validate-email form-control">
+			</div>
+			<div class="actions">
+			<button type="submit" title="Subscribe" class="button"><strong><i class="icon-angle-right"></i></strong></button>
+			</div>
+			</div>
+			</form>
+			</div>
+			
+			</div>
+			<div class="f_block socials">
+			<h4>Follow us<span class="toggle"></span></h4>
+			<div class="footer-col-content">
+			<a href="#"><i class="icon-facebook"></i></a>
+			<a class="btn btn-social-icon btn-twitter">
+    			<i class="fa fa-twitter"></i>
+  			</a>
+			<a href="#"><i class="icon-rss"></i></a>
+			</div>
+			</div> </div>
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>
+
+	</div>
+
 	</div>
 	</div>
 	<div class="clear"></div>
@@ -205,4 +292,29 @@
 
 </div>
 </body>
+<script type="text/javascript">
+		$(document).ready(function(){
+
+				$('#lnkIngles').click(function(){
+					var cadena = window.location.href;
+					var concatenar ='&&';
+					if(cadena.indexOf('?')>0)
+						concatenar='';
+					else concatenar = '?';
+
+					window.location.href = cadena.replace('lang=ES',"").replace('lang=EN','') + concatenar+ 'lang=EN';
+				});
+
+				$('#lnkEspaniol').click(function(){
+					var cadena = window.location.href;
+					var concatenar ='&&';
+					if(cadena.indexOf('?')>0)
+						concatenar='';
+					else concatenar = '?';
+
+					window.location.href = cadena.replace('lang=ES',"").replace('lang=EN','') + concatenar+ 'lang=ES';
+				});
+		});
+</script>
+
 </html>
