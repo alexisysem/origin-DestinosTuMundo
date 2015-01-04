@@ -16,6 +16,9 @@ a:hover {
 
 <script type="text/javascript" src="js/jquery-1.7.min.js"></script>
 <script type="text/javascript" src="js/superfish.js"></script>
+<script type="text/javascript" src="js/scripts.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic,900,900italic&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
 
 
 <link rel="stylesheet" type="text/css" href="css/font-awesome.css" media="all"/>
@@ -32,6 +35,26 @@ a:hover {
 <link rel="stylesheet" type="text/css" href="css/catalogsale.css" media="all"/>
 <link rel="stylesheet" type="text/css" href="css/print.css" media="print"/>
 
+<script type="text/javascript" src="js/prototype/prototype.js"></script>
+<script type="text/javascript" src="js/lib/ccard.js"></script>
+<script type="text/javascript" src="js/prototype/validation.js"></script>
+<script type="text/javascript" src="js/scriptaculous/builder.js"></script>
+<script type="text/javascript" src="js/scriptaculous/effects.js"></script>
+<script type="text/javascript" src="js/scriptaculous/dragdrop.js"></script>
+<script type="text/javascript" src="js/scriptaculous/controls.js"></script>
+<script type="text/javascript" src="js/scriptaculous/slider.js"></script>
+<script type="text/javascript" src="js/varien/js.js"></script>
+<script type="text/javascript" src="js/varien/form.js"></script>
+<script type="text/javascript" src="js/mage/translate.js"></script>
+<script type="text/javascript" src="js/mage/cookies.js"></script>
+<script type="text/javascript" src="js/ecommerceteam/cloud-zoom.1.0.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="js/jquery.mobile.customized.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery.carouFredSel-6.2.1.js"></script>
+<script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
+<script type="text/javascript" src="js/jquery.bxslider.js"></script>
+<script type="text/javascript" src="js/carousel.js"></script>
 
 
 

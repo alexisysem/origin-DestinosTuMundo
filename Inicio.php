@@ -74,113 +74,187 @@
 		</div>
 		<div class="clear"></div>
 		<div class="nav-container">
-		<ul id="nav" class="sf-menu sf-js-enabled">
-			<?php
+			<ul id="nav" class="sf-menu sf-js-enabled">
+				<?php
 
-				$username = "root";
-				$password = "1234";
-				$hostname = "localhost"; 
+					$username = "root";
+					$password = "1234";
+					$hostname = "localhost"; 
 
-				//connection to the database
-				$dbhandle = mysql_connect($hostname, $username, $password) 
-				 or die("Unable to connect to MySQL");
-				//echo "Connected to MySQL<br>";
+					//connection to the database
+					$dbhandle = mysql_connect($hostname, $username, $password) 
+					 or die("Unable to connect to MySQL");
+					//echo "Connected to MySQL<br>";
 
-				//select a database to work with
-				$selected = mysql_select_db("destinos",$dbhandle) 
-				  or die("Could not select examples");
+					//select a database to work with
+					$selected = mysql_select_db("destinos",$dbhandle) 
+					  or die("Could not select examples");
 
-				// Retrieve appropriate title according to the chosen language in the system
-				  $idioma = '';
-				  //echo "<script>alert(".is_null($idioma).")</script>";
-				  if(!array_key_exists('lang',$_GET))
-				  	$idioma = 'ES';
-				  else $idioma = $_GET["lang"];
+					// Retrieve appropriate title according to the chosen language in the system
+					  $idioma = '';
+					  //echo "<script>alert(".is_null($idioma).")</script>";
+					  if(!array_key_exists('lang',$_GET))
+					  	$idioma = 'ES';
+					  else $idioma = $_GET["lang"];
 
-				$sql = "SELECT m.CodigoMenu,mt.DescripcionMenu
-				        FROM MENU m
-				        INNER JOIN MENUTRANSLATION mt ON m.CodigoMenu = mt.CodigoMenu
-				        WHERE mt.CodigoIdioma = '".$idioma."'";
-
-
-				//execute the SQL query and return records
-				$result = mysql_query($sql);
-
-				//fetch tha data from the database 
-				while ($row = mysql_fetch_array($result)) {
-				   echo '<li class="level0 nav-1 first level-top">
-					<a href="aruba.html" class="level-top"><span>'.$row{'DescripcionMenu'}.'</span></a>
-				</li>'; 
-				   
-				}
-				//close the connection
-				mysql_close($dbhandle);
+					$sql = "SELECT m.CodigoMenu,mt.DescripcionMenu,m.Pagina
+					        FROM MENU m
+					        INNER JOIN MENUTRANSLATION mt ON m.CodigoMenu = mt.CodigoMenu
+					        WHERE mt.CodigoIdioma = '".$idioma."'";
 
 
-				?>
-		
-		
-		 
-		</ul>
-		<div class="sf-menu-block">
-		<div id="menu-icon">Categories</div>
-		<ul class="sf-menu-phone">
-		<li class="level0 nav-1 first level-top"><a href="http://livedemo00.template-help.com/magento_47319/aruba.html" class="level-top"><span>Aruba</span></a></li><li class="level0 nav-2 level-top"><a href="http://livedemo00.template-help.com/magento_47319/cancun.html" class="level-top"><span>Cancun</span></a></li><li class="level0 nav-3 level-top parent"><a href="http://livedemo00.template-help.com/magento_47319/florida.html" class="level-top"><span>Florida</span></a><ul class="level0"><li class="level1 nav-3-1 first"><a href="http://livedemo00.template-help.com/magento_47319/florida/eco-tours.html"><span>Eco tours</span></a></li><li class="level1 nav-3-2"><a href="http://livedemo00.template-help.com/magento_47319/florida/family-tours.html"><span>Family tours</span></a></li><li class="level1 nav-3-3 last"><a href="http://livedemo00.template-help.com/magento_47319/florida/hot-tours.html"><span>Local tours</span></a></li></ul><strong></strong></li><li class="level0 nav-4 level-top"><a href="http://livedemo00.template-help.com/magento_47319/hawaii.html" class="level-top"><span>Hawaii</span></a></li><li class="level0 nav-5 level-top"><a href="http://livedemo00.template-help.com/magento_47319/myrtle-beach.html" class="level-top"><span>Myrtle beach</span></a></li><li class="level0 nav-6 last level-top"><a href="http://livedemo00.template-help.com/magento_47319/other.html" class="level-top"><span>Other</span></a></li> </ul>
-		</div>
-		</div>
-		
-			<div class="container">
-			<div class="row">
-			<div class="col-xs-12">
-			<div class="top_block">
-			<p class="welcome-msg">Welcome to our online store! </p>
-			<div class="header-buttons">
-			<div class="header-button currency-list">
-			<a title="Currency" href="#">$</a>
-			<ul>
-			<li>
-			<a href="http://livedemo00.template-help.com/magento_47319/directory/currency/switch/currency/EUR/uenc/aHR0cDovL2xpdmVkZW1vMDAudGVtcGxhdGUtaGVscC5jb20vbWFnZW50b180NzMxOS8,/" title="EUR">Euro - EUR</a>
-			</li>
-			<li>
-			<a class="selected" href="http://livedemo00.template-help.com/magento_47319/directory/currency/switch/currency/USD/uenc/aHR0cDovL2xpdmVkZW1vMDAudGVtcGxhdGUtaGVscC5jb20vbWFnZW50b180NzMxOS8,/" title="USD">US Dollar - USD</a>
-			</li>
+					//execute the SQL query and return records
+					$result = mysql_query($sql);
+
+					//fetch tha data from the database 
+					while ($row = mysql_fetch_array($result)) {
+					   echo '<li class="level0 nav-1 first level-top">
+						<a href="'. $row{'Pagina'} .'?lang='.$idioma.'" class="level-top"><span>'.$row{'DescripcionMenu'}.'</span></a>
+					</li>'; 
+					   
+					}
+					//close the connection
+					mysql_close($dbhandle);
+
+
+					?>
 			</ul>
-			</div>
-			<div class="header-button lang-list">
-			<a title="Language" href="#">en</a>
-			<ul>
-			<li>
-			<a class="selected" href="http://livedemo00.template-help.com/magento_47319/?___store=english&amp;___from_store=english" title="en_US">English</a>
-			</li>
-			<li>
-			<a href="http://livedemo00.template-help.com/magento_47319/?___store=german&amp;___from_store=english" title="de_DE">German</a>
-			</li>
-			<li>
-			<a href="http://livedemo00.template-help.com/magento_47319/?___store=spanish&amp;___from_store=english" title="es_ES">Spanish</a>
-			</li>
-			<li>
-			<a href="http://livedemo00.template-help.com/magento_47319/?___store=russian&amp;___from_store=english" title="ru_RU">Russian</a>
-			</li>
-			</ul>
-			</div>
-			</div>
-			</div>
-			</div>
-			</div>
-			<div class="clear"></div>
+		</div>
+		<div class="header_block">
+			<div class="index_row1">
+				<div class="index_cols_wrapper">
+				<div class="index_col2">
+				<script type="text/javascript" src="js/camera.js"></script>
+				<script type="text/javascript">
+				   /* index slider */
+				   jQuery(function(){
+				    jQuery('#camera_wrap').camera({
+				    alignmen: 'topCenter',
+				    height: '70.909%',
+				    minHeight: '134px',
+				    loader : false,
+				    pagination: false,
+				    fx: 'simpleFade',
+				    navigationHover:false,
+				    thumbnails: false,
+				    playPause: false 
+				    });
+				   });    
+				   </script>
+				<div class="fluid_container">
+				<div class="slider_label"><strong>Best</strong>Hotels</div>
+				<div class="camera_wrap camera_orange_skin" id="camera_wrap">
+				<div data-src="images/slider_pic1.jpg" data-link="aruba.html">
+				<div class="camera_caption fadeFromBottom">
+				<div class="right_slider_side">
+				<h2>Lorem ipsum dolor</h2>
+				<p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				<div class="sl_price">from: <strong>$1,896</strong></div>
+				</div>
+				</div>
+				</div>
+				<div data-src="images/slider_pic2.jpg" data-link="cancun.html">
+				<div class="camera_caption fadeFromBottom">
+				<div class="right_slider_side">
+				<h2>Curabitur imperdiet</h2>
+				<p>Dovitae diam purus luctus facilisis. Nullam at ipsum eros tristique ultrice. Duis quis imperdie dolore est.</p>
+				<div class="sl_price">from: <strong>$1,299</strong></div>
+				</div>
+				</div>
+				</div>
+				<div data-src="images/slider_pic3.jpg" data-link="myrtle-beach.html">
+				<div class="camera_caption fadeFromBottom">
+				<div class="right_slider_side">
+				<h2>Phasellus sed</h2>
+				<p>Proin lacinia mi et lacus tincidunt rutrum. Nulla tincidunt leo et sem dapibus, a tempor purus tempus. Mauris tincidunt.</p>
+				<div class="sl_price">from: <strong>$995</strong></div>
+				</div>
+				</div>
+				</div>
+				</div>
+				</div>
+				</div>
+				<div class="index_col1">
+				<div class="banner_medium ban1">
+				<a href="http://livedemo00.template-help.com/magento_47319/other.html">
+				<div class="hot"><strong>Local</strong>tour</div>
+				<img src="images/banner1.jpg" alt="">
+				<div class="banner_holder">
+				<h2>Thailand</h2>
+				<p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit.</p>
+				<div class="ban_price">from $1,896</div>
+				<span class="btn_shop">Shop now!</span>
+				</div>
+				</a>
+				</div>
+				</div>
+				</div>
+				<div class="index_col3">
+				<div class="banner_medium ban4">
+				<a href="http://livedemo00.template-help.com/magento_47319/other.html">
+				<div class="hot"><strong>Hot</strong>tour</div>
+				<img src="http://livedemo00.template-help.com/magento_47319/skin/frontend/default/theme211k/images/banner4.jpg" alt="">
+				<div class="banner_holder">
+				<h2>Paris</h2>
+				<p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit.</p>
+				<div class="ban_price">from $1,896</div>
+				<span class="btn_shop">Shop now!</span>
+				</div>
+				</a>
+				</div>
+				</div>
+				</div>
+			<div class="index_row2">
+				<div class="index_cols_wrapper">
+				<div class="index_col2">
+				<div class="banner_wide ban3">
+				<a href="http://livedemo00.template-help.com/magento_47319/hawaii.html">
+				<img src="http://livedemo00.template-help.com/magento_47319/skin/frontend/default/theme211k/images/banner3.jpg" alt="">
+				<div class="banner_holder">
+				<h2>Hot tours</h2>
+				<p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				<span class="btn_shop">Shop now!</span>
+				</div>
+				</a>
+				</div>
+				</div>
+				<div class="index_col1">
+				<div class="banner_small ban2">
+				<a href="http://livedemo00.template-help.com/magento_47319/florida.html">
+				<div class="hot"><strong>Hot</strong>tour</div>
+				<img src="http://livedemo00.template-help.com/magento_47319/skin/frontend/default/theme211k/images/banner2.jpg" alt="">
+				<div class="banner_holder">
+				<h2>Florida</h2>
+				<p>Lorem ipsum dolor sit amet cons</p>
+				</div>
+				</a>
+				</div>
+				</div>
+				</div>
+				<div class="index_col3">
+				<div class="banner_small ban5">
+				<a href="http://livedemo00.template-help.com/magento_47319/turkey.html">
+				<div class="hot"><strong>Hot</strong>tour</div>
+				<img src="http://livedemo00.template-help.com/magento_47319/skin/frontend/default/theme211k/images/banner5.jpg" alt="">
+				<div class="banner_holder">
+				<h2>Turkey</h2>
+				<p>Lorem ipsum dolor sit amet cons</p>
+				</div>
+				</a>
+				</div>
+				</div>
 			</div>
 		</div>
-		 
-		
-		
-		
-		
+
+			
+		</div>	
 		</div>
 		</div>
 		</div>
 		 
 		</div> </div>
 	<div class="main-container-tile">
+
 	</div>
 	<div class="footer-container">
 		<div class="container">
@@ -293,9 +367,9 @@
 </div>
 </body>
 <script type="text/javascript">
-		$(document).ready(function(){
+		jQuery(function(){
 
-				$('#lnkIngles').click(function(){
+				jQuery('#lnkIngles').click(function(){
 					var cadena = window.location.href;
 					var concatenar ='&&';
 					if(cadena.indexOf('?')>0)
@@ -305,7 +379,7 @@
 					window.location.href = cadena.replace('lang=ES',"").replace('lang=EN','') + concatenar+ 'lang=EN';
 				});
 
-				$('#lnkEspaniol').click(function(){
+				jQuery('#lnkEspaniol').click(function(){
 					var cadena = window.location.href;
 					var concatenar ='&&';
 					if(cadena.indexOf('?')>0)
