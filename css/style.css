@@ -26,6 +26,9 @@
 /* @import"../css/bootstrap.css"; */
  
 /* Reset ================================================================================= */
+
+@import"FlexSlider.css";
+
 * { margin:0; padding:0; }
 html {
     height: 100%;
@@ -3195,7 +3198,7 @@ span.opened:before {content: "\f068";}
 .ban5:hover img { opacity:0.9; filter:alpha(opacity=90); }
 
 .hot { position:absolute; z-index:2; top:20px; left:0; width:105px; height:84px; padding:22px 0 0 18px; border-radius:0 42px 42px 0; font-size:21px; font-weight:bold; text-transform:uppercase; color:#fff; }
-.hot strong { display:block; font-size:34px; margin-bottom:5px; }
+.hot strong { display:block; font-size:24px; margin-bottom:5px; }
 .ban1 .hot { background:#fe8503; }
 .ban2 .hot { background:#fe3232; }
 .ban4 .hot { background:#59c00d; }
@@ -3222,6 +3225,170 @@ span.opened:before {content: "\f068";}
 .sf-menu-phone li a
 
 { transition: all 0.3s ease 0s; }
+
+
+/***DIEGO CSS**/
+
+.title-detail {
+	color: #fe8503;
+	font-size: 20px;
+	padding: 0px 0px 20px 0px;
+}
+
+.data-detail {
+	padding:  0px 0px 30px 0px;
+}
+
+
+.post-detail {
+	border-bottom: 1px solid #ececec;
+	padding: 0px 0px 10px 0px;
+}
+
+.stock {
+	color: #333;
+	padding: 8px 0px 20px 0px;
+}
+
+.stock span {
+	color: #59c00d;
+}
+
+.costo-detail {
+	font-size: 30px;
+}
+
+.title-descrip {
+	display: block;
+	padding: 10px;
+	border: 1px solid #ececec;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.txt-descrip {
+	display: block;
+	padding: 20px 0px 20px 0px;
+}
+
+.txt-descrip p {
+	padding: 0px 0px 10px 0px;
+}
+
+.ban-dt1 {
+	height: 300px;
+	margin-bottom: 8px;	
+}
+
+.ban-dt1 img {
+	width: 100%;
+	height: 100%;
+}
+
+.ban-dt2 {
+	width: 94px;
+	height: 94px;
+	float: left;
+}
+
+.ban-dt2 img {
+	width: 100%;
+	height: 100%;
+}
+
+.int {
+	margin: 0px 8px;
+}
+
+.add {
+	border-top: 1px solid #ececec;
+	margin: 20px 0px 0px 0px;
+	padding: 10px 0px 0px 0px;
+	float: right;
+}
+
+.add a {
+	display: block;
+	max-width: 100px;
+	text-align: center;
+	color: #FFF;
+	text-decoration: none;
+	border-radius: 5px;
+	padding: 10px;
+
+background: #fe8403; /* Old browsers */
+background: -moz-linear-gradient(top,  #fe8403 0%, #fe7203 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fe8403), color-stop(100%,#fe7203)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #fe8403 0%,#fe7203 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #fe8403 0%,#fe7203 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #fe8403 0%,#fe7203 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #fe8403 0%,#fe7203 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fe8403', endColorstr='#fe7203',GradientType=0 ); /* IE6-9 */
+
+}
+
+.cont-detail {
+	padding: 0px 20px 0px 20px;	
+}
+
+.title-right {
+	color: #015381;
+	padding: 12px 15px 12px 15px;
+	font-weight: 500;
+	font-size: 18px;
+	border-radius: 6px;
+	border: 1px solid #b5bbbd;
+	margin-bottom: 25px;
+
+	background: #fefefe; /* Old browsers */
+background: -moz-linear-gradient(top,  #fefefe 0%, #e7ebec 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fefefe), color-stop(100%,#e7ebec)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #fefefe 0%,#e7ebec 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #fefefe 0%,#e7ebec 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #fefefe 0%,#e7ebec 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #fefefe 0%,#e7ebec 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#e7ebec',GradientType=0 ); /* IE6-9 */
+
+}
+
+.box-prod {
+	display: block;
+	overflow: hidden;
+	padding: 0px 0px 16px 0px;
+	margin-bottom: 16px;
+	border-bottom: 1px solid #ececec;
+}
+
+.prod-img {
+	height: 94px;
+	width: 94px;
+	float: left;
+}
+
+.prod-img img {
+	width: 100%;
+	height: 100%;
+}
+
+.prod-date {
+	margin-left: 106px;
+}
+
+.prod-date .name {
+	color: #015381;
+	min-height: 40px;
+}
+
+.prod-date .precio {
+	font-weight: bold;
+	padding-bottom: 5px;
+}
+
+.prod-date .add-cart {
+	color: #015381;
+	font-weight: bold;
+	font-size: 13px;
+}
 
 
 

@@ -1,0 +1,87 @@
+/*
+ * jQuery FlexSlider v1.7
+ * http://flex.madebymufffin.com
+ *
+ * Copyright 2011, Tyler Smith
+ * Free to use under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ */
+ 
+/*********************************************
+*               FLEX SLIDER                  *
+*********************************************/
+
+.flex-container a:active,
+.flexslider a:active {outline: none;}
+.slides,
+.flex-control-nav,
+.flex-direction-nav {margin: 0; padding: 0; list-style: none;} 
+
+/* FlexSlider Necessary Styles
+*********************************/ 
+.flexslider {width: 99.9%; border: 1px solid #FFF; margin: 0; padding: 0px;}
+.flexslider .slides > li {display: none;} /* Hide the slides before the JS is loaded. Avoids image jumping */
+.flexslider .slides img {max-width: 100%; display: block;}
+.flex-pauseplay span {text-transform: capitalize;}
+
+/* Clearfix for the .slides element */
+.slides:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;} 
+html[xmlns] .slides {display: block;} 
+* html .slides {height: 1%;}
+
+/* No JavaScript Fallback */
+/* If you are not using another script, such as Modernizr, make sure you
+ * include js that eliminates this class on page load */
+.no-js .slides > li:first-child {display: block;}
+
+
+/* FlexSlider Default Theme
+*********************************/
+.flexslider {background: #fff; position: relative; zoom: 1;}
+.flexslider .slides {zoom: 1;}
+.flexslider .slides > li {position: relative;}
+/* Suggested container for "Slide" animation setups. Can replace this with your own, if you wish */
+.flex-container {
+	zoom: 1; position: relative; padding: 0px; -webkit-border-radius: 0px; -moz-border-radius: 0px; 
+	-o-border-radius: 0px; border-radius: 0px;
+	background: #FFF;
+}
+
+/* Caption style */
+/* IE rgba() hack */
+.flex-caption {background:none; -ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000);
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000); zoom: 1;}
+.flex-caption {width: 100%; /*padding: 20px;*/padding: 29px; position: absolute; left: 0; bottom: 0; background: rgba(255,255,255,0.80); color: #015381; text-shadow: 0 -1px 0 rgba(0,0,0,.3); font-size: 18px; line-height: 18px;}
+
+/* Direction Nav */
+.flex-direction-nav {*height: 0; 
+
+	display: block;  /*width: 1024px;*/ margin: 0px auto; position: relative; /*prueba direcional*/
+}
+
+
+.flex-direction-nav a {width: 40px; height: 52px; margin: -20px 0 0; display: block; background: url(../images/bg_direction_nav.png) no-repeat 0 0; position: absolute; /*top: 50%;*/ top:-198px; z-index: 10; cursor: pointer; text-indent: -9999px; opacity: 0; -webkit-transition: all .3s ease;}
+.flex-direction-nav .flex-next {background-position: 100% 0; right: -36px; }
+.flex-direction-nav .flex-prev {left: -36px;}
+
+.flexslider:hover .flex-next {opacity: 0.8; right: 5px;}
+.flexslider:hover .flex-prev {opacity: 0.8; left: 5px;}
+.flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover {opacity: 1;}
+.flex-direction-nav .flex-disabled {opacity: .3!important; filter:alpha(opacity=30); cursor: default;}
+
+/* Control Nav */
+.flex-control-nav {width: 100%; position: absolute; bottom: 13px; text-align: center; z-index: 100; display: none;}
+.flex-control-nav li {margin: 0 6px; display: inline-block; zoom: 1; *display: inline;}
+.flex-control-paging li a {width: 25px; height: 25px; display: block; background: url("../images/bullet.png") 0px -25px no-repeat; /*background: rgba(0,0,0,0.5);*/ cursor: pointer; text-indent: -9999px; -webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; /*box-shadow: inset 0 0 3px rgba(0,0,0,0.3);*/}
+.flex-control-paging li a:hover { background: url("../images/bullet.png") 0px 0px no-repeat; /*background: rgba(0,0,0,0.7);*/ }
+.flex-control-paging li a.flex-active { background: url("../images/bullet.png") 0px 0px no-repeat; cursor: default; }
+
+.flex-control-thumbs {margin: 5px 0 0; position: static; overflow: hidden;}
+.flex-control-thumbs li {width: 25%; float: left; margin: 0;}
+.flex-control-thumbs img {width: 100%; display: block; opacity: .7; cursor: pointer;}
+.flex-control-thumbs img:hover {opacity: 1;}
+.flex-control-thumbs .flex-active {opacity: 1; cursor: default;}
+
+/*@media screen and (max-width: 860px) {*/
+  .flex-direction-nav .flex-prev {opacity: 1; left: 0%;}
+  .flex-direction-nav .flex-next {opacity: 1; right: 0%;}
